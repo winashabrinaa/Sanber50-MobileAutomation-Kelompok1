@@ -1,5 +1,5 @@
 *** Settings ***
-Resource             ../pageObjects/Base/base2.robot
+Resource            ../base.robot
 Variables            bookflight_locator.yaml
 
 
