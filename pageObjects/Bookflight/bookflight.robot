@@ -1,54 +1,87 @@
 *** Settings ***
-Resource            ../base.robot
+Resource            ../baseRealDevice.robot
 Variables            bookflight_locator.yaml
 
-
-
-
-Library    AppiumLibrary
+Library     AppiumLibrary
 
 *** Keywords ***
-Click Book for menu
-    Wait Until Page Contains Element    ${Searchmenubook}
-    Tap                                 ${Searchmenubook}
-Click Round Trip
-    Wait Until Page Contains Element    ${round_trip}
-    Tap                                 ${round_trip}
-Choose Data From City
-    Tap                                 ${tap_fromcity}
-    Wait Until Page Contains Element    ${tap_fromcitytoronto}
-    Click Element                       ${tap_fromcitytoronto}
-Choose Data To City
-    Tap                                 ${tap_tocity}
-    Wait Until Page Contains Element    ${tap_tocityparis}
-    Click Element                       ${tap_tocityparis}
-Choose Data Class
-    Tap                                 ${tap_class}
-    Wait Until Page Contains Element    ${tap_classbusiness}
-    Click Element                       ${tap_classbusiness}
-Picklist Startdate Flight
-    Tap                                 ${startdate}
-    Wait Until Element Is Visible       ${klikstartdate}
-    Click Element                       ${okstartdate}
-Picklist Enddate Flight
-    Tap                                 ${enddate}
-    Wait Until Element Is Visible       ${klikenddate}
-    Click Element                       ${okenddate}
-Choose radio Button
-    Click Button                        ${flighthotel}
-Choose checkbox
-    Wait Until Page Contains Element    ${checkboxday}
-    Click Element                       ${checkboxday}
-Click Book for bookflight
-    Wait Until Page Contains Element    ${bookflight}
-    Tap                                 ${bookflight}
-Choose Price to Confirm Booking
-    Wait Until Page Contains Element    ${price}
-    Click Element                       ${price}
-Click Confirm
-    Wait Until Page Contains Element    ${buttonprice}
-    Tap                                 ${buttonprice}
-Verify Page Booked
-    Wait Until Element Is Visible       ${booked}
+Click Book Button
+      Click Element                     ${bookButton}  
 
-    
+waiting book page appears
+    Wait Until Element Is Visible       ${LogoApp}
+    Wait Until Element Is Visible       ${OneWay}
+    Wait Until Element Is Visible       ${RoundTrip}
+    Wait Until Element Is Visible       ${FromCity}   
+
+click round trip
+    Click Element                       ${RoundTrip} 
+
+Choose Data From City
+    Click Element                       ${FromCity}
+
+waiting choose from city appears 
+    Wait Until Element Is Visible       ${ListViewFrom}
+    Wait Until Element Is Visible       ${Toronto}
+
+choose city Toronto
+    Click Element                       ${Toronto}
+
+click to city
+    Click Element                       ${ToCity}
+
+waiting choose to city appears
+    Wait Until Element Is Visible       ${ListViewTo}
+    Wait Until Element Is Visible       ${Otawa}
+
+choose city otawa 
+    Click Element                       ${Otawa}
+
+choose class
+    Click Element                       ${Class}
+
+waiting choose class appears
+    Wait Until Element Is Visible       ${ListViewClass}
+    Wait Until Element Is Visible       ${Business}
+
+choose business 
+    Click Element                       ${Business}
+
+choose start date
+    Click Element                       ${StartDate}
+
+waiting choose start date appears 
+    Wait Until Element Is Visible       ${PickStart}
+    Wait Until Element Is Visible       ${StartOk}
+
+choose 1 august
+    Click Element                       ${PickStart}
+    Click Element                       ${StartOk}
+
+choose end date
+    Click Element                       ${EndDate}
+
+waiting choose end date appears
+    Wait Until Element Is Visible       ${PickEnd}
+    Wait Until Element Is Visible       ${EndOk}
+
+choose 22 august
+    Click Element                       ${PickEnd}
+    Click Element                       ${EndOk}
+
+choose flight and hotel
+    Click Element                       ${FlightandHotel}
+
+click book
+    Click Element                       ${Book}
+
+wait price page appears
+    Wait Until Element Is Visible       ${StartReturn}
+    Wait Until Element Is Visible       ${Price}
+    Wait Until Element Is Visible       ${Confirm}
+
+choose price
+    Click Element                       ${Price}
+
+click Confirm
+    Click Element                       ${Confirm}
